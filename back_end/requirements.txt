@@ -1,0 +1,15 @@
+django
+daphne
+djangorestframework
+channels
+django-cors-headers
+openai
+dotenv
+psycopg2-binary
+requests
+sqlparse
+asgiref
+certifi
+oauthlib
+googletrans
+pillow

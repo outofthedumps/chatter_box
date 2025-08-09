@@ -1,0 +1,6 @@
+.env
+.env.development
+.env.production
+chatter.pem
+playground.py 
+
