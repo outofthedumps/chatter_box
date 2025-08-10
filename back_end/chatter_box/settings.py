@@ -17,9 +17,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['localhost' , os.getenv('ALLOWED_HOSTS').split(",")]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(",") if os.getenv('ALLOWED_HOSTS') else []
 CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
 
 # Application definition
@@ -80,12 +80,12 @@ ASGI_APPLICATION = 'chatter_box.asgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('ENGINE'),
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'), 
-        'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT')
+        'ENGINE': os.getenv('DB_ENGINE'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'), 
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
     }
 }
 
@@ -135,7 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = '/var/www/myapp/static'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
